@@ -4,7 +4,9 @@ const Taxis = [
 { id: 2, position: 12, available: true, timeRemaining: 0, 
 totalRides: 0 }, 
 { id: 3, position: 20, available: true, timeRemaining: 0, 
-totalRides: 0 } 
+totalRides: 0 } ,
+{ id: 3, position: 20, available: false, timeRemaining: 0, 
+totalRides: 0 }
 ] ;
 
 const Requests = [ 
@@ -47,7 +49,7 @@ const Requests = [
 // function CalculerDistance(){
 //     const distance = Math.abs(Taxis.position - Requests.position);
 //     let disponibilite =Taxis.available;
-//     if(disponibilite ===true){
+//     if(disponibilite === true){
 
 //     }
 
@@ -65,53 +67,60 @@ const Requests = [
 
 
 
-function CalculerDistance(){
-     let distance =[];
-    for(let i=0;i<Taxis.length ;i++){
-    for(let j=0 ;j<Requests.length;j++){
+// function CalculerDistance(){
+//   let plusProche;
+//     let distance =[];
+//     for(let i=0;i<Taxis.length ;i++){
+//     for(let j=0 ;j<Requests.length;j++){
 
-        const d=Math.abs(Taxis[i].position - Requests[j].position);
+//         const d=Math.abs(Taxis[i].position - Requests[j].position);
         
-        distance.push({
-            idTaxi: Taxis[i].id,
-            idRequest : Requests[j].reqId,
-            Dis : d 
-        }) ;
+//         distance.push({
+//             idTaxi: Taxis[i].id,
+//             idRequest : Requests[j].reqId,
+//             Dis : d 
+//         }) ;
 
-     }
-   }
-   console.log(distance);
-  }
-  CalculerDistance();
+//      }
+//    }
+//    console.log(distance);
+  
+//    plusProche = distance.reduce((min, curr) => (curr.Dis < min.Dis ? curr : min), distance[0]);
+//    console.log("la distance la plus proche est:",plusProche);
 
-  function TrouverTaxiPourRequest(request) {
-  if (Taxis.length === 0) {
-    console.log("Aucun taxi disponible !");
-    return null;
-  }
+//   }
+//   CalculerDistance();
 
-  let taxiPlusProche = null;
-  let distanceMin = Infinity;
 
-  for (let taxi of Taxis) {
-    if (taxi.available === true) {
-      let distance = Math.abs(request.position - taxi.position);
-      if (distance < distanceMin) {
-        distanceMin = distance;
-        taxiPlusProche = taxi;
-      }
-    }
-  }
 
-  return taxiPlusProche;
-}
+//   function TrouverTaxiPourRequest(request) {
+//   if (Taxis.length === 0) {
+//     console.log("Aucun taxi disponible !");
+//     return null;
+//   }
 
-let taxi = TrouverTaxiPourRequest(Requests[0]);
-if (taxi) {
-  console.log("Le taxi le plus proche est l'ID ", taxi.id, " à la position ", taxi.position);
-} else {
-  console.log("Aucun taxi trouvé.");
-}
+//   let taxiPlusProche = null;
+//   let distanceMin = Infinity;
+
+//   for (let taxi of Taxis) {
+//     if (taxi.available === true) {
+//       let distance = Math.abs(request.position - taxi.position);
+//       if (distance < distanceMin) {
+//         distanceMin = distance;
+//         taxiPlusProche = taxi;
+//       }
+//     }
+//   }
+
+//   return taxiPlusProche;
+// }
+
+// let taxi = TrouverTaxiPourRequest(Requests[0]);
+// if (taxi) {
+//   console.log("Le taxi le plus proche est l'ID ", taxi.id, " à la position ", taxi.position);
+// } else {
+//   console.log("Aucun taxi trouvé.");
+// }
 
 
 
@@ -151,7 +160,39 @@ if (taxi) {
 //     }
 // }
 
-CalculerDistance();
+// function TrouverTaxiPourRequest(request) {
+//   if (Taxis.length === 0) {
+//     console.log("Aucun taxi disponible !");
+//     return null;
+//   }
+
+//   let taxiPlusProche = null;
+//   let distanceMin = null;
+
+//   for (let taxi of Taxis) {
+//     if (taxi.available) {
+//       const distance = Math.abs(request.position - taxi.position);
+//       if (distanceMin === null || distance < distanceMin) {
+//         distanceMin = distance;
+//         taxiPlusProche = taxi;
+//       }
+//     }
+//   }
+
+//   return taxiPlusProche;
+// }
+// let taxi = TrouverTaxiPourRequest(Requests[0]);
+// if (taxi) {
+//   console.log("Le taxi le plus proche est l'ID ", taxi.id, " à la position ", taxi.position);
+// } else {
+//   console.log("Aucun taxi trouvé.");
+// }
+
+
+// CalculerDistance();
+
+
+
 
         
 
